@@ -1,0 +1,27 @@
+{% include 'admin/head.html' %}
+
+<div class="container">
+    <h1>Categories</h1>
+    <a href="{% url 'add_category' %}" class="btn btn-success mb-3">Add Category</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{% url 'edit_category' category.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_category' category.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'admin/footer.html' %}

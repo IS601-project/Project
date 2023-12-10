@@ -1,0 +1,31 @@
+{% include 'admin/head.html' %}
+
+<div class="container">
+    <h1>Checkouts</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Email Address</th>
+            <th>Delivery Location</th>
+            <th>Product IDs</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for checkout in checkouts %}
+            <tr>
+                <td>{{ checkout.first_name }}</td>
+                <td>{{ checkout.last_name }}</td>
+                <td>{{ checkout.phone_number }}</td>
+                <td>{{ checkout.email_address }}</td>
+                <td>{{ checkout.delivery_location }}</td>
+                <td>{{ checkout.product_ids }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'admin/footer.html' %}

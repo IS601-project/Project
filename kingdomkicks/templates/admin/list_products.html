@@ -1,0 +1,41 @@
+{% include 'admin/head.html' %}
+
+<div class="container">
+    <h1>Products</h1>
+    <a href="{% url 'add_product' %}" class="btn btn-success mb-3">Add Product</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>SKU</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Size</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.sku }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td><img src="{{ product.image.url }}" alt="{{ product.name }}" width="50"></td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.size }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>
+                    <a href="{% url 'edit_product' product.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_product' product.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'admin/footer.html' %}

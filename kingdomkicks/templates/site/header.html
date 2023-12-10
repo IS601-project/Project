@@ -1,0 +1,34 @@
+
+
+{% load static %}
+<body>
+
+<div class="alert alert-dismissible fade show offer" role="alert">
+    <strong>Free US shipping on orders over $250</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true"><strong>&times;</strong></span>
+    </button>
+</div>
+
+<div class="topbar">
+    <header class="brandname">
+        <a href="{% url 'home' %}">KINGDOM KICKS</a>
+    </header>
+    <nav class="menubar">
+        <ul>
+            <li><a href="{% url 'women' %}">WOMEN</a></li>
+            <li><a href="#">ACCESSORIES</a></li>
+            <li><a href="#">NEW & FEATURED</a></li>
+            <li><a href="{% url 'shop_all' %}">SHOP ALL</a></li>
+            <li><a href="#">GIFT CARD</a></li>
+        </ul>
+    </nav>
+    <nav class="topicons">
+        <ul>
+            <li><a href="#"><img src="{% static '/finder.png' %}"></a></li>
+            <li><a href="#"><img src="{% static '/favorites.png' %}"></a></li>
+            <li><a href="{% url 'cart' %}"><img src="{% static '/cart.png' %}"></a></li>
+        </ul>
+    </nav>
+</div>
+</body>

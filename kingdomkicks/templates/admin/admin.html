@@ -1,0 +1,19 @@
+{% include 'admin/head.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Admin</h1>
+            <hr>
+            <h2>Posts</h2>
+            <p>Total number of products: {{ product_count }}</p>
+            <p>Total number of categories: {{ category_count }}</p>
+            <a href="{% url 'list_products' %}" class="btn btn-primary">View Products</a>
+            <a href="{% url 'list_categories' %}" class="btn btn-primary">View Categories</a>
+            <a href="{% url 'list_checkout' %}" class="btn btn-primary">View Checkouts</a>
+            <!-- ... rest of your template ... -->
+        </div>
+    </div>
+</div>
+
+{% include 'admin/footer.html' %}

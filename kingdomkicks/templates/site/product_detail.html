@@ -1,0 +1,70 @@
+{% include 'site/head.html' %}
+{% include 'site/header.html' %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-5">
+            <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}">
+        </div>
+        <div class="col-md-7">
+            <h1 class="custom_font">{{ product.name }}</h1>
+
+            <p class="txt_secondary">SKU: {{ product.sku }}</p>
+
+            <h3>${{ product.price }}</h3>
+            <br/>
+            <p>{{ product.category }}</p>
+            <p>Size: {{ product.size }}</p>
+            <p>Quantity: {{ product.quantity }}</p>
+
+            {% if product.quantity == 0 %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Sorry!</strong> This product is out of stock.
+                </div>
+            {% else %}
+                <a href="{% url 'add_to_cart' product.id %}" class="btn btn-pink">ADD TO BAG</a>
+            {% endif %}
+
+            <br/>
+            <br/>
+            <p>{{ product.description }}</p>
+        </div>
+    </div>
+    <hr/>
+    <h3 class="custom_font">Related Products</h3>
+    <div class="row">
+        {% for product in related_products %}
+
+            <div class="col-4" style="width: 18rem;">
+                <a href="{% url 'product_detail' product.id %}">
+                    <img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}" style="">
+
+                    {% if product.quantity == 0 %}
+                        <div class="card-body list-group-item-danger">
+                            <div class="row ">
+                                <h5 class="col-9 card-title">{{ product.name }}</h5>
+                                <h5 class="col-2 card-title text-right">${{ product.price }}</h5>
+                            </div>
+                            <p class="card-text">${{ product.price }}</p>
+                            <p class="card-text">{{ product.description|slice:"0:150" }}...</p>
+                            <a class="card-text ">Out of stock</a>
+                        </div>
+                    {% else %}
+
+                        <div class="card-body">
+                            <div class="row ">
+                                <h5 class="col-9 card-title">{{ product.name }}</h5>
+                                <h5 class="col-2 card-title text-right">${{ product.price }}</h5>
+                            </div>
+                            <p class="card-text">{{ product.description|slice:"0:150" }}...</p>
+                            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-pink">ADD TO CART</a>
+                        </div>
+                    {% endif %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'site/footer.html' %}
