@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Checkout Success</title>
-</head>
-<body>
-    <h1>Checkout Success</h1>
-    <p>Thank you for your purchase! Your order has been placed successfully.</p>
-</body>
-</html>
+{% include 'site/head.html' %}
+{% include 'site/header.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Checkout Success</h1>
+            <p class="text-center">Thank you for your purchase! Your order is now being processed.</p>
+            <div class="text-center">
+                <a href="/" class="btn btn-pink">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'site/footer.html' %}

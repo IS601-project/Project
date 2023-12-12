@@ -174,6 +174,10 @@ def checkout(request):
         delivery_location = request.POST.get('delivery_location')
 
         cart = request.session.get('cart', [])
+        for product_id in cart:
+            product = Product.objects.get(id=product_id)
+            product.quantity -= 1
+            product.save()
 
         checkout = Checkout.objects.create(
             first_name=first_name,
@@ -186,6 +190,6 @@ def checkout(request):
         checkout.save()
         request.session['cart'] = []
 
-        return redirect('checkout_success')
+        return render(request, 'site/checkout_success.html')
     else:
         return render(request, 'site/checkout.html')
